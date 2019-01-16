@@ -4,6 +4,8 @@ const app = new Vue({
         product: 'Socks',
         image: './assets/vmSocks-green.jpg',
         altText: 'a pair of socks',
-        link: '#'
+        inventory: 100,
+        outOfStock: false,
+        onSale: true
     }
 });
