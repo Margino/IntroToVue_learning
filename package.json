@@ -1,0 +1,25 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Margino/IntroToVue_learning.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Margino/IntroToVue_learning/issues"
+  },
+  "homepage": "https://github.com/Margino/IntroToVue_learning#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.3"
+  },
+  "dependencies": {
+    "gulp": "^4.0.0"
+  }
+}
