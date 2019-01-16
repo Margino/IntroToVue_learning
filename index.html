@@ -21,14 +21,23 @@
                 <h1>{{ product }}</h1>
                 <p v-if="inStock">In stok</p>
                 <p v-else="outOfStock">Out of stock</p>
+
                 <ul>
                     <li v-for="detail in detales">{{ detail }}</li>
                 </ul>
+
                 <ul>
                     <li v-for="size in sizes">{{ size }}</li>
                 </ul>
+
                 <div v-for="variant in variants" :key="variant.variantId">
-                    <p>{{ variant.variantColor }}</p>
+                    <p @mouseover="updateProduct(variant.variantImage)">{{ variant.variantColor }}</p>
+                </div>
+                
+                <button v-on:click="addToCart">Add to Chart</button>
+                <button @click="removeFromCart">Remove from cart</button>
+                <div class="chart">
+                    <p>Cart ({{cart}})</p>
                 </div>
             </div>
 
