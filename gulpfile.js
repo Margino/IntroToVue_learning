@@ -11,12 +11,11 @@ gulp.task('serv', () => {
     })
 });
 
-gulp.task('dev', gulp.series('serv', () => {
-    gulp.watch([
-        './**/*.{js,html}',
-        '!./node_modules'
-        ], (done) => {
-            browserSync.reload();
-            done();
-        });
-}));
+gulp.task('watch', () => {
+    gulp.watch(['./**/*.{css,html,js}','!./node_modules'], (done) => {
+        browserSync.reload()
+        done()
+    });
+});
+
+gulp.task('dev', gulp.parallel('serv', 'watch'));
