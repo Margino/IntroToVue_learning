@@ -2,24 +2,45 @@ const app = new Vue({
     el: '#app',
     data: {
         product: 'Socks',
-        image: './assets/vmSocks-green.jpg',
+        brand: 'The best brand',
+        selectedVariant: 0,
+        onSale: true,
         altText: 'a pair of socks',
-        inStock: false,
         detales: ['80% cotton', '20% polyester', 'Gender-neutral'],
         variants: [
             {
                 variantId   : 2243,
                 variantColor: 'green',
-                variantImage: './assets/vmSocks-green.jpg'
+                variantImage: './assets/vmSocks-green.jpg',
+                vartiantQuatnity: 10
             },
             {
                 variantId   : 2235,
                 variantColor: 'blue',
-                variantImage: './assets/vmSocks-blue.jpg'
+                variantImage: './assets/vmSocks-blue.jpg',
+                vartiantQuatnity: 0
             }
         ],
         sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL'],
-        cart: 0
+        cart: 0,
+        onSale: true
+    },
+    computed: {
+        title() {
+            return `${this.brand} ${this.product}`;
+        },
+        image() {
+            return this.variants[this.selectedVariant].variantImage;
+        },
+        inStock() {
+            return this.variants[this.selectedVariant].vartiantQuatnity
+        },
+        sale() {
+          if (this.onSale) {
+            return this.brand + ' ' + this.product + ' are on sale!'
+          }
+            return  this.brand + ' ' + this.product + ' are not on sale'
+        }
     },
     methods: {
         addToCart() {
@@ -28,8 +49,9 @@ const app = new Vue({
         removeFromCart() {
             this.cart -= 1;
         },
-        updateProduct(variantImage) {
-            this.image = variantImage;
+        updateProduct(index) {
+            this.selectedVariant = index;
+            console.log(index);
         }
     }
 });
