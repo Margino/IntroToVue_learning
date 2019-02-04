@@ -10,8 +10,7 @@
 <body>
 
     <div id="app">
-        <p>{{ greeting }}</p>
-        <p>{{ obj.car }}</p>
+        <p>{{ welcome() }}</p>
     </div>
 
 <script>
@@ -21,6 +20,11 @@
             greeting: 'Hello guys!',
             obj: {
                 car: 'Audi'
+            }
+        },
+        methods: {
+            welcome() {
+                return this.greeting
             }
         }
     })
