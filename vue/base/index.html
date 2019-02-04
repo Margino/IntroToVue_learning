@@ -10,24 +10,24 @@
 <body>
 
     <div id="app">
-        <p>{{ welcome() }}</p>
+        <p><img :src="src" :alt="alt"></p>
+        <p><a :href="href" v-text="link"></a></p>
+        <p v-html="html"></p>
     </div>
 
 <script>
+
     new Vue({
         el: '#app',
         data: {
-            greeting: 'Hello guys!',
-            obj: {
-                car: 'Audi'
-            }
-        },
-        methods: {
-            welcome() {
-                return this.greeting
-            }
+            src: 'https://picsum.photos/200/300',
+            alt: 'lorem picsum',
+            link: 'Let\'s Vue',
+            href: 'https://vuejs.org',
+            html: '<strong>Hi!</strong>'
         }
     })
+
 </script>
 </body>
 </html>
