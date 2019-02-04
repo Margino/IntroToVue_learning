@@ -10,9 +10,10 @@
 <body>
 
     <div id="app">
-        <p><img :src="src" :alt="alt"></p>
-        <p><a :href="href" v-text="link"></a></p>
-        <p v-html="html"></p>
+        <p v-if="age >= allowed">Okay</p>
+        <p v-else-if="checkName()">Hi Boss!</p>
+        <p v-else>Not okay</p>
+        <p v-show="age < allowed">Too young</p>
     </div>
 
 <script>
@@ -20,11 +21,14 @@
     new Vue({
         el: '#app',
         data: {
-            src: 'https://picsum.photos/200/300',
-            alt: 'lorem picsum',
-            link: 'Let\'s Vue',
-            href: 'https://vuejs.org',
-            html: '<strong>Hi!</strong>'
+            user: 'Admin',
+            age: 28,
+            allowed: 21
+        },
+        methods: {
+            checkName() {
+                return this.user === 'Admin';
+            }
         }
     })
 
