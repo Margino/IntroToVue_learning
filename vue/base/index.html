@@ -9,5 +9,21 @@
 </head>
 <body>
 
+    <div id="app">
+        <p>{{ greeting }}</p>
+        <p>{{ obj.car }}</p>
+    </div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            greeting: 'Hello guys!',
+            obj: {
+                car: 'Audi'
+            }
+        }
+    })
+</script>
 </body>
 </html>
