@@ -11,43 +11,46 @@
 
     <div id="app">
 
-        <form @submit.prevent="formHandler">
-            <label>name
-                <input type="text" v-model="formData.name">
-            </label>
-            <hr>
-            <label>last name
-                <input type="text" v-model.trim.lazy="formData.lastName">
-            </label>
-            <hr>
-            <label>age
-                <input type="text" v-model.number="formData.age">
-            </label>
-            <hr>
-            <button type="submit">submit</button>
-        </form>
+        <div class="black"
+            :class="colors"
+            @click="
+                colors.red = !colors.red,
+                newStyle.fontSize = '40px'"
+            :style="newStyle"
+        >
+            Some text here
+        </div>
 
     </div>
-
+<style media="screen">
+    .black {
+        background: black;
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+    }
+    .red {
+        background: red;
+    }
+</style>
 
 <script>
 
     new Vue({
         el: '#app',
         data: {
-            name: 'John',
-            formData: {
-                name: '',
-                lastName: '',
-                age: '',
+            colors: {
+                blue: true,
+                red: true,
+            },
+            newStyle: {
+                border: '3px solid green',
             },
         },
         methods: {
-            formHandler() {
-                console.log(this.formData);
-            }
+
         },
-    });
+    })
 
 </script>
 </body>
