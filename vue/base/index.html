@@ -10,10 +10,22 @@
 <body>
 
     <div id="app">
-        <p v-if="age >= allowed">Okay</p>
-        <p v-else-if="checkName()">Hi Boss!</p>
-        <p v-else>Not okay</p>
-        <p v-show="age < allowed">Too young</p>
+        <h2>Names</h2>
+        <ul>
+            <li v-for="(name, index) in names">
+            {{ index }}  :  {{ name }}
+            </li>
+        </ul>
+        <h2>Cars</h2>
+        <ul>
+            <li v-for="(car, index) in cars">
+                {{ index }}: {{ car.model }}, {{ car.color }}
+            </li>
+        </ul>
+        <h2>User</h2>
+        <p v-for="(value, key, index) in user">
+            {{ index }} : {{ key }} : {{ value }}
+        </p>
     </div>
 
 <script>
@@ -21,13 +33,17 @@
     new Vue({
         el: '#app',
         data: {
-            user: 'Admin',
-            age: 28,
-            allowed: 21
-        },
-        methods: {
-            checkName() {
-                return this.user === 'Admin';
+            names: [ 'John', 'Smith', 'Mark' ],
+            cars: [
+                { model: 'Ford', color: 'red' },
+                { model: 'Audi', color: 'blue' },
+                { model: 'BMW', color: 'green' },
+            ],
+            user: {
+                name: 'John',
+                lastName: 'Smith',
+                age: 25,
+
             }
         }
     })
