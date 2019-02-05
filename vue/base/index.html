@@ -11,46 +11,49 @@
 
     <div id="app">
 
-        <div class="black"
-            :class="colors"
-            @click="
-                colors.red = !colors.red,
-                newStyle.fontSize = '40px'"
-            :style="newStyle"
-        >
-            Some text here
-        </div>
+        <input type="text" v-model="user">
+        <button type="butotn" @click="toggleActive">Other action</button>
+        <p>Name: {{ compMessage }}</p>
 
+        <p>Active: {{ isActive() }}</p>
+
+        <p>Loading: {{ loading }}</p>
     </div>
-<style media="screen">
-    .black {
-        background: black;
-        padding: 10px;
-        color: white;
-        cursor: pointer;
-    }
-    .red {
-        background: red;
-    }
-</style>
+
 
 <script>
 
     new Vue({
         el: '#app',
         data: {
-            colors: {
-                blue: true,
-                red: true,
+            user: '',
+            active: false,
+            loading: false,
+        },
+        watch: {
+            active(value) {
+                this.loading = true;
+                setTimeout(() => {
+                    this.loading = false;
+                }, 2500);
             },
-            newStyle: {
-                border: '3px solid green',
+        },
+        computed: {
+            compMessage() {
+                console.log('Message');
+                return this.user === 'John' ? 'Welcome' : 'You are banned';
             },
         },
         methods: {
-
-        },
-    })
+            isActive() {
+                console.log('isActive');
+                return this.active ? 'Active' : 'Not active';
+            },
+            toggleActive() {
+                this.active ? this.active = false : this.active = true;
+            },
+        }
+    });
 
 </script>
 </body>
