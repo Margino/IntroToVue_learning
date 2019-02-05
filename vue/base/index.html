@@ -10,6 +10,7 @@
 <body>
 
     <div id="app">
+        <h2 ref="title">Hello</h2>
         Instance one: {{ value }}
         <button type="button" @click="change">Change</button>
     </div>
@@ -36,6 +37,8 @@
         methods: {
             change() {
                 app2.value = 'this is changed';
+                this.$refs.title.style.color = 'green';
+                this.$refs.title.style.fontSize = '28px';
             }
         },
     });
