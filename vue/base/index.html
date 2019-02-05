@@ -11,24 +11,41 @@
 
     <div id="app">
         <h2>{{ name }}</h2>
-        <h2 v-once>{{ name }}</h2>
-        {{ update() }}
+        <span @dblclick="update">Click me!</span>
+
+        <div class="box" @mousemove="hover">
+            Hover me!
+        </div>
+        x: {{ x }}, y: {{ y }}
     </div>
+    <style>
+        .box {
+            margin-top: 28px;
+            width: 300px;
+            height: 300px;
+            background-color: green;
+            color: #fff;
+        }
+    </style>
 
 <script>
 
     new Vue({
         el: '#app',
         data: {
-            name: 'Mr. Smith',
+            name: 'John',
+            x: 0,
+            y: 0,
         },
         methods: {
             update() {
-                setTimeout(() => {
-                    this.name = 'Mrs. Smith';
-                }, 1500)
-            }
-        },
+                this.name = 'Smith';
+            },
+            hover(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+        }
     })
 
 </script>
