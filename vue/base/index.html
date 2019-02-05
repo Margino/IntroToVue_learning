@@ -10,50 +10,52 @@
 <body>
 
     <div id="app">
-
-        <input type="text" v-model="user">
-        <button type="butotn" @click="toggleActive">Other action</button>
-        <p>Name: {{ compMessage }}</p>
-
-        <p>Active: {{ isActive() }}</p>
-
-        <p>Loading: {{ loading }}</p>
+        Instance one: {{ value }}
+        <button type="button" @click="change">Change</button>
     </div>
+
+    <hr>
+
+    <div id="app2">
+        Instance two: {{ value }}
+        <button type="button" @click="saySomething">Click</button>
+    </div>
+
 
 
 <script>
 
-    new Vue({
+    let message = 'Hello';
+    let data = {
+        value: 'is working',
+    };
+
+    const app = new Vue({
         el: '#app',
+        data: data,
+        methods: {
+            change() {
+                app2.value = 'this is changed';
+            }
+        },
+    });
+
+    const app2 = new Vue({
+        el: '#app2',
         data: {
-            user: '',
-            active: false,
-            loading: false,
-        },
-        watch: {
-            active(value) {
-                this.loading = true;
-                setTimeout(() => {
-                    this.loading = false;
-                }, 2500);
-            },
-        },
-        computed: {
-            compMessage() {
-                console.log('Message');
-                return this.user === 'John' ? 'Welcome' : 'You are banned';
-            },
+            value: 'is working',
         },
         methods: {
-            isActive() {
-                console.log('isActive');
-                return this.active ? 'Active' : 'Not active';
+            saySomething() {
+                console.log(message);
             },
-            toggleActive() {
-                this.active ? this.active = false : this.active = true;
-            },
-        }
+        },
     });
+
+    setTimeout(() => {
+        app.value = 'changed!';
+    }, 2500);
+
 
 </script>
 </body>
