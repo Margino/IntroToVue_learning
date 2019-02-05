@@ -10,16 +10,8 @@
 <body>
 
     <div id="app">
-        <h2>{{ name }}</h2>
-        <span @click.left="updateName('John', $event)">
-            Clic me!
-        </span>
-
-        <form @submit.prevent="handleForm">
-            <br>
-            <input type="text">
-            <button type="submit">Sumbit</button>
-        </form>
+        <input type="text" @keyup.space.71.h="handler">
+        <!-- 71 == g -->
     </div>
 
 
@@ -28,18 +20,15 @@
     new Vue({
         el: '#app',
         data: {
-            name: 'Smith',
+
         },
         methods: {
-            updateName(newName, event) {
-                this.name = newName;
-                console.log(event);
-            },
-            handleForm() {
-                console.log('submit the form');
-            },
+            handler(event) {
+                console.log(event.target.value);
+            }
         },
-    })
+    });
+
 </script>
 </body>
 </html>
