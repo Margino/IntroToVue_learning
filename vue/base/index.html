@@ -10,23 +10,45 @@
 <body>
 
     <div id="app">
-        
+        <name></name>
+        <hr>
+        <name></name>
+    </div>
+
+    <div id="app2">
+        <name></name>
     </div>
 
 <script>
 
-    const template = `<p>{{ name }}</p>`
+    const template = `
+        <div>
+            <p>{{ name }}</p>
+            <button @click="consoleSomething">Push me!</button>
+        </div>
+    `;
 
-    const app = new Vue({
-        data: {
-            name: 'John',
+    Vue.component('name', {
+        data() {
+            return {
+                name: 'John',
+            };
+        },
+        methods: {
+            consoleSomething() {
+                console.log('Hello!');
+            }
         },
         template: template,
     });
 
-    setTimeout(() => {
-        app.$mount('#app');
-    }, 2500);
+    const app = new Vue({
+        el: '#app',
+    });
+
+    const app2 = new Vue({
+        el: '#app2',
+    });
 
 
 </script>
