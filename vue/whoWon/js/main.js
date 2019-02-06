@@ -1,10 +1,11 @@
 new Vue({
     el: '#app',
     data: {
-        state: true,
+        state    : true,
         inputName: '',
-        names: [],
+        names    : [],
         showError: false,
+        result   : '',
     },
     methods: {
         addNameToList() {
@@ -21,6 +22,16 @@ new Vue({
                 return true;
             }
             return false;
+        },
+        showResults() {
+            let random = this.names[Math.floor(Math.random() * this.names.length)];
+            this.result = random;
+            this.state = false;
+        },
+        resetApp() {
+            this.state  = true;
+            this.names  = [];
+            this.result = '';
         },
     },
 });

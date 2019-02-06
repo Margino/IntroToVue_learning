@@ -18,10 +18,32 @@
                 <button type="button" @click="addNameToList">Add</button>
             </div>
             <div class="error_label" v-if="showError">You must enter a name!</div>
+            <div class="list_of_names">
+                <div v-for="( name, index ) in names"
+                     :key="index"
+                >
+                    {{ name }}
+                </div>
+            </div>
+            <div v-if="names.length > 1">
+                <div class="action_button"
+                      @click="showResults">
+                      Check the winner
+                </div>
+            </div>
         </div>
         <div id="result" class="container" v-if="!state">
             <div class="result__container">
-                <h1>The winner is</h1>
+                <h1>The winner is:</h1>
+                <div class="result_value">
+                    {{ result }}
+                </div>
+                <div
+                    class="action_button"
+                    @click="resetApp"
+                >
+                    Start again
+                </div>
             </div>
         </div>
     </div>
