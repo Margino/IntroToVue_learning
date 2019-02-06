@@ -33,5 +33,8 @@ new Vue({
             this.names  = [];
             this.result = '';
         },
+        deleteName(index) {
+            this.names.splice(index, 1);
+        }
     },
 });
