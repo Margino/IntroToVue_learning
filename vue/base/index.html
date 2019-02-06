@@ -10,45 +10,56 @@
 <body>
 
     <div id="app">
-        <name></name>
-        <hr>
-        <name></name>
+        <p>{{ name }}</p>
+        <p><button @click="updateName">Update name</button></p>
+        <p><button @click="killName">Destroy name</button></p>
     </div>
 
-    <div id="app2">
-        <name></name>
-    </div>
 
 <script>
 
-    const template = `
-        <div>
-            <p>{{ name }}</p>
-            <button @click="consoleSomething">Push me!</button>
-        </div>
-    `;
-
-    Vue.component('name', {
-        data() {
-            return {
-                name: 'John',
-            };
-        },
-        methods: {
-            consoleSomething() {
-                console.log('Hello!');
-            }
-        },
-        template: template,
-    });
 
     const app = new Vue({
-        el: '#app',
+        data: {
+            name: 'John',
+        },
+        methods: {
+            updateName() {
+                this.name = 'Smith';
+            },
+            killName() {
+                this.$destroy();
+            },
+        },
+        beforeCreate() {
+            console.log('Running before create');
+        },
+        created() {
+            console.log('Running created');
+        },
+        beforeMount() {
+            console.log('Running before mount');
+        },
+        mounted() {
+            console.log('Running mounted');
+        },
+        beforeUpdate() {
+            console.log('Running before update');
+        },
+        updated() {
+            console.log('Running updated');
+        },
+        beforeDestroy() {
+            console.log('Running before destroy');
+        },
+        destroyed() {
+            console.log('Running destroyed');
+        },
     });
 
-    const app2 = new Vue({
-        el: '#app2',
-    });
+    setTimeout(() => {
+        app.$mount('#app');
+    }, 2500);
 
 
 </script>
